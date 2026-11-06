@@ -10,13 +10,16 @@ class TouchToSign < Formula
 
   def install
     system "swiftc", "-O", "-o", "touch-to-sign", "touch-to-sign.swift"
-    bin.install "touch-to-sign"
+    bin.install "touch-to-sign", "touch-to-sign-ssh"
   end
 
   def caveats
     <<~EOS
       To sign through touch-to-sign, run:
         git config --global gpg.program "#{HOMEBREW_PREFIX}/bin/touch-to-sign"
+
+      To show the popup while ssh waits for a security key touch, run:
+        git config --global core.sshCommand "#{HOMEBREW_PREFIX}/bin/touch-to-sign-ssh"
     EOS
   end
 
@@ -25,5 +28,8 @@ class TouchToSign < Formula
     ENV["GIT_CONFIG_KEY_0"] = "touch-to-sign.program"
     ENV["GIT_CONFIG_VALUE_0"] = "/bin/echo"
     assert_equal "--verify x", shell_output("#{bin}/touch-to-sign --verify x").strip
+
+    ENV["SSH_ASKPASS_PROMPT"] = "confirm"
+    shell_output("#{bin}/touch-to-sign-ssh x", 1)
   end
 end
