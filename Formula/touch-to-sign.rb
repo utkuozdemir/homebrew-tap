@@ -1,8 +1,8 @@
 class TouchToSign < Formula
   desc "Show a popup on macOS while git waits for a YubiKey touch to sign"
   homepage "https://github.com/utkuozdemir/touch-to-sign"
-  url "https://github.com/utkuozdemir/touch-to-sign/archive/refs/tags/v0.1.2.tar.gz"
-  sha256 "9d953b15ad44389df43e89a3ad863c0cce80309a6455e91fdbd650a8537b797a"
+  url "https://github.com/utkuozdemir/touch-to-sign/archive/refs/tags/v0.1.3.tar.gz"
+  sha256 "afd8f5099703a09d21de7ede3ff7cff271a11e8d18c3e022bad2f5c3d4c3e612"
   license "MIT"
   head "https://github.com/utkuozdemir/touch-to-sign.git", branch: "main"
 
